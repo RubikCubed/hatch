@@ -1,0 +1,39 @@
+cabal-version:      2.4
+name:               hatch
+version:            0.1.0.0
+license:            ISC
+license-file:       LICENSE
+author:             oldmate, bred
+maintainer:         oldmate, bred
+homepage:           https://github.com/rubikcubed/hatch
+bug-reports:        https://github.com/rubikcubed/hatch/issues
+synopsis:           Haskell Fetch
+description:
+    Haskell Fetch
+
+category:           System
+
+common base
+    default-language: GHC2021
+    ghc-options:      -Wall -Wcompat -Werror=incomplete-patterns
+    build-depends:
+        base ^>=4.16.3.0,
+        tomland ^>=1.3.3.2
+
+library
+    import:           base
+    hs-source-dirs:   src
+    exposed-modules:
+        Hatch
+        Hatch.Config
+        Hatch.Info
+
+executable hatch
+    import:           base
+    main-is:          Main.hs
+    hs-source-dirs:   app
+    other-modules:    Paths_hatch
+
+    autogen-modules:  Paths_hatch   
+    build-depends:
+        hatch
